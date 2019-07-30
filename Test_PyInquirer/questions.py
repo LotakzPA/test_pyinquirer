@@ -1,4 +1,8 @@
 from PyInquirer import Separator
+from PyInquirer import Validator, ValidationError
+
+from MyValidators import PhoneNumberValidator
+
 
 questions = [
     {
@@ -10,6 +14,12 @@ questions = [
         'type': 'password',
         'name': 'password',
         'message': 'What\'s your password',
+    },
+    {
+        'type': 'input',
+        'name': 'number',
+        'message': 'Type your phone number',
+        'validate': PhoneNumberValidator
     },
     {
         'type': 'list',
@@ -58,5 +68,13 @@ questions = [
         ],
         'validate': lambda answer: 'You must choose at least one topping.' \
             if len(answer) == 0 else True
+    },
+    {
+        'type': 'input',
+        'name': 'favorite',
+        'message': 'Whew! What is your favorite type of pizza?',
+        'when': lambda answers: answers.get('Gwen', False)
     }
+
+
 ]
