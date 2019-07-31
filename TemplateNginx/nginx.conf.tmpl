@@ -1,0 +1,15 @@
+load_module modules/ngx_http_js_module.so;
+
+events {{}}
+
+http {{
+    js_include {js_file};
+
+    server {{
+        listen {port};
+
+        location / {{
+            js_content {entry_point};
+        }}
+    }}
+}}

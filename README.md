@@ -1,1 +1,1 @@
-Hello World Git
+Cours du CESI sur Python
